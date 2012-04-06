@@ -11,10 +11,12 @@ TEMPLATE = lib
 
 DEFINES += STOCKBROKER_LIBRARY
 
-SOURCES += stockbroker.cpp
+SOURCES += stockbroker.cpp \
+    order.cpp
 
 HEADERS += stockbroker.h\
-        StockBroker_global.h
+        StockBroker_global.h \
+    order.h
 
 symbian {
     MMP_RULES += EXPORTUNFROZEN
