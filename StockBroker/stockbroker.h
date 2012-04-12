@@ -4,21 +4,24 @@
 #include "StockBroker_global.h"
 #include "order.h"
 #include <QList>
+#include <QDebug>
 
 class STOCKBROKERSHARED_EXPORT StockBroker {
 public:
-    StockBroker(void *marketOrderCallback);
+    StockBroker(void *marketOrderBuyCallback,void *marketOrderSellCallback);
 
     void updateMarket(float value);
-    void placeOrder(Order o);
+    void placeOrder(Order *o);
+    void executeOrder(Order *o);
 
 private:
     float m_value;
 
     // Callback function to place a market order
-    void *placeMarketOrder;
+    void *placeMarketBuyOrder;
+    void *placeMarketSellOrder;
 
-    QList<Order> *orderList;
+    QList<Order*> *orderList;
 
 };
 

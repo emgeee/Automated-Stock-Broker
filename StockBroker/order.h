@@ -13,10 +13,12 @@ class Order : public QObject
     Q_OBJECT
 public:
     explicit Order(QObject *parent = 0);
+    QString type();
     
 private:
     float m_value;
     QDateTime timePlaced;
+    QString typeOfOrder;
 
 signals:
     
