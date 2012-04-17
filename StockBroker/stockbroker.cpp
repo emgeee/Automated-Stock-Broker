@@ -1,15 +1,8 @@
 #include "stockbroker.h"
 
 
-StockBroker::StockBroker(void *marketOrderBuyCallback,
-                         void *marketOrderSellCallback)
-    : placeMarketBuyOrder(marketOrderBuyCallback),
-      placeMarketSellOrder(marketOrderSellCallback)
+StockBroker::StockBroker()
 {
-    if(placeMarketBuyOrder == NULL || placeMarketSellOrder == NULL){
-        qDebug() << "Must pass in a valid market order function";
-        return;
-    }
 
     orderList = new QList<Order*>();
 }
@@ -36,5 +29,10 @@ void StockBroker::placeOrder(Order *o)
 // Execute a buy or a sell market order
 void StockBroker::executeOrder(Order *o)
 {
+    if(o->type() == "MARKET_BUY"){
+        StockBroker::placeMarketBuyOrder(o->getSymbol(), o->getShares());
+    }else if(o->type() == "MARKET_SELL"){
+        StockBroker::placeMarketSellOrder(o->getSymbol(), o->getShares());
+    }
 
 }
