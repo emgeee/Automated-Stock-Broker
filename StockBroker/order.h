@@ -12,7 +12,7 @@ class Order : public QObject
 {
     Q_OBJECT
 public:
-    explicit Order( QString symbol, int shares, QObject *parent = 0);
+    explicit Order( QString symbol, int shares, float stop = 0, float limit = 0, QObject *parent = 0);
 
     // Getter method for type of order
     T_ORDER type();

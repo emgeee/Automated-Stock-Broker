@@ -1,8 +1,8 @@
 #include "order.h"
 
 // Constructor - no value required
-Order::Order(QString symbol, int shares, QObject *parent) :
-    QObject(parent), m_stockSymbol(symbol), m_shares(shares)
+Order::Order( QString symbol, int shares, float stop, float limit, QObject *parent):
+    QObject(parent), m_stockSymbol(symbol), m_shares(shares), m_stopPrice(stop), m_limitPrice(limit)
 {
 }
 
