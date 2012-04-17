@@ -6,6 +6,7 @@
 #include <QList>
 #include <QDebug>
 
+
 class STOCKBROKERSHARED_EXPORT StockBroker {
 public:
     StockBroker();

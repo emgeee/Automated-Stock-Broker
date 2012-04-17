@@ -5,7 +5,7 @@ Order::Order(QString symbol, int shares, QObject *parent) :
 {
 }
 
-QString Order::type()
+T_ORDER Order::type()
 {
     return m_typeOfOrder;
 }
