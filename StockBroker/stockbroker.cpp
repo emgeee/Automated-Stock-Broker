@@ -11,18 +11,26 @@ void StockBroker::updateMarket(float value)
 {
     m_value = value;
 
+    QList<Order> marketOrders;
+
     // iterate through all lists and convert appropriate orders to market order
+    // TODO convert indexes to enable deletion
     foreach(Order *o, *orderList){
         switch (o->type()){
-        case MARKET_BUY:
+        case BUY_STOP:
+            if(o->getStop() >= m_value){
+                // TODO append new order
+                //marketOrders << ;
+
+                // TODO remove order from list
+            }
 
             break;
-        case MARKET_SELL:
 
+        default:
+            continue;
             break;
         }
-
-
     }
 }
 
