@@ -5,14 +5,14 @@
 #include <QDateTime>
 
 // Do buy and sell need separate individual order types?
-enum T_ORDER {MARKET_BUY,MARKET_SELL, BUY_STOP};
+enum T_ORDER {MARKET_BUY, MARKET_SELL, BUY_STOP, BUY_LIMIT, BUY_STOP_LIMIT,
+             SELL_STOP, SELL_LIMIT, SELL_STOP_LIMIT};
 
 class Order : public QObject
 {
     Q_OBJECT
 public:
     explicit Order( QString symbol, int shares, QObject *parent = 0);
-    explicit Order(float value, QString symbol, int shares, QObject *parent = 0);
 
     // Getter method for type of order
     T_ORDER type();

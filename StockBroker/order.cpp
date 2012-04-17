@@ -6,12 +6,6 @@ Order::Order(QString symbol, int shares, QObject *parent) :
 {
 }
 
-// Constructor - allows assigning value
-Order::Order(float value, QString symbol, int shares, QObject *parent) :
-    QObject(parent), m_value(value), m_stockSymbol(symbol), m_shares(shares)
-{
-}
-
 T_ORDER Order::type()
 {
     return m_typeOfOrder;

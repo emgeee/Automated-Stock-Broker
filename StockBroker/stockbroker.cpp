@@ -3,7 +3,6 @@
 
 StockBroker::StockBroker()
 {
-
     orderList = new QList<Order*>();
 }
 
@@ -11,20 +10,40 @@ void StockBroker::updateMarket(float value)
 {
     m_value = value;
 
-    QList<Order> marketOrders;
-
-    // iterate through all lists and convert appropriate orders to market order
+    // iterate through all lists and convert appropriate orders to new orders
+    // and execute any market orders
     // TODO convert indexes to enable deletion
-    foreach(Order *o, *orderList){
-        switch (o->type()){
+    for(int i = 0; i < orderList->length(); i++){
+        switch ((*orderList)[i]->type()){
         case BUY_STOP:
-            if(o->getStop() >= m_value){
-                // TODO append new order
-                //marketOrders << ;
+            if((*orderList)[i]->getStop() >= m_value){
 
-                // TODO remove order from list
             }
+            break;
+        case BUY_LIMIT:
+            if((*orderList)[i]->getStop() >= m_value){
 
+            }
+            break;
+        case BUY_STOP_LIMIT:
+            if((*orderList)[i]->getStop() >= m_value){
+
+            }
+            break;
+        case SELL_STOP:
+            if((*orderList)[i]->getStop() >= m_value){
+
+            }
+            break;
+        case SELL_LIMIT:
+            if((*orderList)[i]->getStop() >= m_value){
+
+            }
+            break;
+        case SELL_STOP_LIMIT:
+            if((*orderList)[i]->getStop() >= m_value){
+
+            }
             break;
 
         default:
@@ -32,6 +51,8 @@ void StockBroker::updateMarket(float value)
             break;
         }
     }
+
+
 }
 
 // Add a new order to the order list
