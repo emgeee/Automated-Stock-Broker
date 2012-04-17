@@ -1,11 +1,26 @@
 #include "order.h"
 
-Order::Order(QObject *parent) :
-    QObject(parent)
+Order::Order(QString symbol, int shares, QObject *parent) :
+    QObject(parent), m_stockSymbol(symbol), m_shares(shares)
 {
 }
 
 QString Order::type()
 {
-    return typeOfOrder;
+    return m_typeOfOrder;
+}
+
+int Order::getShares()
+{
+    return m_shares;
+}
+
+void Order::setShares(int number)
+{
+    m_shares = number;
+}
+
+QString Order::getSymbol()
+{
+    return m_stockSymbol;
 }
