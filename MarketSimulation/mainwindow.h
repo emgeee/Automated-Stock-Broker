@@ -3,8 +3,10 @@
 
 #include <QMainWindow>
 #include "../StockBroker/stockbroker.h"
-#include <QGroupBox>
-#include <QRadioButton>
+#include <QFontComboBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
 #include <QBoxLayout>
 
 namespace Ui {
@@ -21,8 +23,17 @@ public:
     
 private:
     Ui::MainWindow *ui;
-    QGroupBox orderList;
-    QRadioButton buy;
+    QFontComboBox buy;
+    QFontComboBox sell;
+    QPushButton submit;
+    QLabel symbol;
+    QLabel shares;
+    QLabel limit;
+    QLabel stop;
+    QLineEdit symbolEdit;
+    QLineEdit sharesEdit;
+    QLineEdit limitEdit;
+    QLineEdit stopEdit;
 
 };
 
