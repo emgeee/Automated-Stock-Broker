@@ -116,3 +116,18 @@ void StockBroker::executeOrder(Order *o)
     o->executeCallback(o);
 
 }
+
+static bool *(placeMarketBuyOrder)(QString symbol, int shares)
+{
+
+    return 0;
+
+}
+
+
+static bool *(placeMarketSellOrder)(QString symbol, int shares)
+{
+
+    return 0;
+
+}
