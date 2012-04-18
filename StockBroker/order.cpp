@@ -69,3 +69,13 @@ void Order::setStop(float value)
 }
 
 
+QDateTime Order::getDate()
+{
+    return m_timePlaced;
+}
+
+// Should this be by a pointer?
+void Order::setDate(QDateTime d)
+{
+    m_timePlaced = d;
+}
