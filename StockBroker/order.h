@@ -21,11 +21,11 @@ public:
     float getStop();
     QString getSymbol();
 
+    void setType(T_ORDER t);
     void setShares(int);
     void setLimit(float);
     void setStop(float);
 
-    
 private:
     int m_shares;
     float m_limitPrice;

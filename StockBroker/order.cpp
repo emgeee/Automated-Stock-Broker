@@ -11,6 +11,11 @@ T_ORDER Order::type()
     return m_typeOfOrder;
 }
 
+void Order::setType(T_ORDER t)
+{
+    m_typeOfOrder = t;
+}
+
 int Order::getShares()
 {
     return m_shares;
@@ -45,3 +50,5 @@ void Order::setStop(float value)
 {
     m_stopPrice = value;
 }
+
+

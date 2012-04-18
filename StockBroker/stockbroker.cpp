@@ -10,44 +10,80 @@ void StockBroker::updateMarket(float value)
 {
     m_value = value;
 
+    // create a local reference for easier access
+    QList<Order*> &list = *orderList;
+
     // iterate through all lists and convert appropriate orders to new orders
     // and execute any market orders
     // TODO convert indexes to enable deletion
     for(int i = 0; i < orderList->length(); i++){
-        switch ((*orderList)[i]->type()){
+        switch (list[i]->type()){
         case BUY_STOP:
-            if((*orderList)[i]->getStop() >= m_value){
+            if(list[i]->getStop() >= m_value){
+                list[i]->setType(MARKET_BUY);
+                executeOrder(list[i]);
 
+                //remove order after execution
+                list.removeAt(i);
+                i--;
             }
             break;
+
         case BUY_LIMIT:
-            if((*orderList)[i]->getStop() >= m_value){
+            if(list[i]->getLimit() <= m_value){
+                list[i]->setType(MARKET_BUY);
+                executeOrder(list[i]);
 
+                //remove order after execution
+                list.removeAt(i);
+                i--;
             }
             break;
+
         case BUY_STOP_LIMIT:
-            if((*orderList)[i]->getStop() >= m_value){
+            if(list[i]->getStop() >= m_value){
+                //becomes Buy limit
+                list[i]->setType(BUY_LIMIT);
 
+                //Must recheck if the new limit order should be executed
+                i--;
             }
             break;
+
         case SELL_STOP:
-            if((*orderList)[i]->getStop() >= m_value){
+            if(list[i]->getStop() <= m_value){
+                list[i]->setType(MARKET_BUY);
+                executeOrder(list[i]);
 
+                //remove order after execution
+                list.removeAt(i);
+                i--;
             }
             break;
+
         case SELL_LIMIT:
-            if((*orderList)[i]->getStop() >= m_value){
+            if(list[i]->getLimit() >= m_value){
+                list[i]->setType(MARKET_BUY);
+                executeOrder(list[i]);
 
+                //remove order after execution
+                list.removeAt(i);
+                i--;
             }
             break;
-        case SELL_STOP_LIMIT:
-            if((*orderList)[i]->getStop() >= m_value){
 
+        case SELL_STOP_LIMIT:
+            if(list[i]->getStop() <= m_value){
+                //becomes Buy limit
+                list[i]->setType(BUY_LIMIT);
+
+                //Must recheck if the new limit order should be executed
+                i--;
             }
             break;
 
         default:
-            continue;
+
             break;
         }
     }
