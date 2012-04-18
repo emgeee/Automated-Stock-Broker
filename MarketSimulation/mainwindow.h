@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include "../StockBroker/stockbroker.h"
-#include <QFontComboBox>
+#include <QComboBox>
+#include <QRadioButton>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
@@ -23,8 +24,9 @@ public:
     
 private:
     Ui::MainWindow *ui;
-    QFontComboBox buy;
-    QFontComboBox sell;
+    QComboBox dropdown;
+    QRadioButton buy;
+    QRadioButton sell;
     QPushButton submit;
     QLabel symbol;
     QLabel shares;
