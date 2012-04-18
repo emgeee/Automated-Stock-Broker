@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include "../StockBroker/stockbroker.h"
+#include <QGroupBox>
+#include <QRadioButton>
+#include <QBoxLayout>
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +21,8 @@ public:
     
 private:
     Ui::MainWindow *ui;
+    QGroupBox orderList;
+    QRadioButton buy;
 
 };
 
