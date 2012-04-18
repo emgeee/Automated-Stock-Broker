@@ -15,7 +15,6 @@ void StockBroker::updateMarket(float value)
 
     // iterate through all lists and convert appropriate orders to new orders
     // and execute any market orders
-    // TODO convert indexes to enable deletion
     for(int i = 0; i < orderList->length(); i++){
         switch (list[i]->type()){
         case BUY_STOP:
@@ -87,8 +86,6 @@ void StockBroker::updateMarket(float value)
             break;
         }
     }
-
-
 }
 
 // Add a new order to the order list
@@ -116,6 +113,6 @@ void StockBroker::executeOrder(Order *o)
         StockBroker::placeMarketSellOrder(o->getSymbol(), o->getShares());
     }
 
-    // TODO: execute order callback function
+    o->executeCallback(o);
 
 }

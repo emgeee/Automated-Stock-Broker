@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QDateTime>
+#include <functional>
 
 // Do buy and sell need separate individual order types?
 enum T_ORDER {MARKET_BUY, MARKET_SELL, BUY_STOP, BUY_LIMIT, BUY_STOP_LIMIT,
@@ -25,6 +26,8 @@ public:
     void setShares(int);
     void setLimit(float);
     void setStop(float);
+    void setCallback(void (*f)(Order*));
+    void executeCallback(Order*);
 
 private:
     int m_shares;
@@ -34,6 +37,8 @@ private:
     QDateTime m_timePlaced;
     T_ORDER m_typeOfOrder;
     QString m_stockSymbol;
+
+    std::pointer_to_unary_function<Order*, void> *callBack;
 
 signals:
     

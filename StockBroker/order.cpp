@@ -4,6 +4,23 @@
 Order::Order( QString symbol, int shares, float stop, float limit, QObject *parent):
     QObject(parent), m_stockSymbol(symbol), m_shares(shares), m_stopPrice(stop), m_limitPrice(limit)
 {
+    callBack = NULL;
+}
+
+// If this works...
+void Order::setCallback(void (*f)(Order*))
+{
+    if(callBack != NULL)
+        delete callBack;
+
+    callBack = new std::pointer_to_unary_function<Order*, void>(f);
+
+}
+
+void Order::executeCallback(Order *o)
+{
+    if (callBack != NULL)
+        (*callBack)(o);
 }
 
 T_ORDER Order::type()
