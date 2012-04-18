@@ -117,7 +117,7 @@ void StockBroker::executeOrder(Order *o)
 
 }
 
-static bool *(placeMarketBuyOrder)(QString symbol, int shares)
+static bool StockBroker::*(placeMarketBuyOrder)(QString symbol, int shares)
 {
 
     return 0;
@@ -125,7 +125,7 @@ static bool *(placeMarketBuyOrder)(QString symbol, int shares)
 }
 
 
-static bool *(placeMarketSellOrder)(QString symbol, int shares)
+static bool StockBroker::*(placeMarketSellOrder)(QString symbol, int shares)
 {
 
     return 0;
