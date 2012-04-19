@@ -21,6 +21,7 @@ public:
     float getLimit();
     float getStop();
     QString getSymbol();
+    QDateTime getDate();
 
     void setType(T_ORDER t);
     void setShares(int);
@@ -28,7 +29,11 @@ public:
     void setStop(float);
     void setCallback(void (*f)(Order*));
     void executeCallback(Order*);
+
     void setSymbol(QString symbolName);
+
+    void setDate(QDateTime);
+
 
 private:
     int m_shares;
