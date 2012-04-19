@@ -50,9 +50,31 @@ void simulationMarket::generateFakeMarketFromFile(QString fileName){
 
 }
 
+// IF :
+//      a new buy order
+//      a new sell order
+//      price flucation
+//
+// OCCURS, this method will update the stock within the Market List
+
 void simulationMarket::updateStockInMarket(QString ticker, int price, int quantity)
 {
 
+    for(int i = 0; i < stocks->size(); ++i){
 
+        // if tickers match, found in List
+        // remove from list, update then reinsert
+        if(stocks->at(i).tickerSymbol == ticker){
+            stock *updatedStock = new stock();
+            updatedStock->tickerSymbol = ticker;
+            updatedStock->currentPrice = price;
+            updatedStock->quantityAvailable = quantity;
+
+            stocks->append(*updatedStock);
+
+            stocks->removeAt(i);
+}
+
+}
 
 }
