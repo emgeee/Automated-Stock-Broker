@@ -29,6 +29,7 @@ public:
 
     void generateFakeMarketFromFile(QString fileName);
 
+    void updateStockInMarket(QString ticker, int price, int quantity);
     QList<stock> *stocks;
 
 };

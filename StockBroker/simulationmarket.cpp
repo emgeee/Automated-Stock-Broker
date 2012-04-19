@@ -49,3 +49,10 @@ void simulationMarket::generateFakeMarketFromFile(QString fileName){
     }
 
 }
+
+void simulationMarket::updateStockInMarket(QString ticker, int price, int quantity)
+{
+
+
+
+}
