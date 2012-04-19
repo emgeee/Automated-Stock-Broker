@@ -23,6 +23,9 @@ MainWindow::MainWindow(QWidget *parent) :
     stop.setText("Stop:");
     submit.setText("Submit");
 
+    //set styles of widgets
+    submit.setStyleSheet("background-color:green; color:white; border-color:white; border:2px solid; border-radius:20px; width:15px; height:30px;");
+
     //organize buttons and drop down menu
     QVBoxLayout *orderList = new QVBoxLayout();
     orderList->addWidget(&buy);
@@ -32,43 +35,29 @@ MainWindow::MainWindow(QWidget *parent) :
     orderWidget->setLayout(orderList);
 
     //organize labels and line edits
-    QHBoxLayout *symbolLayout = new QHBoxLayout();
-    symbolLayout->addWidget(&symbol);
-    symbolLayout->addWidget(&symbolEdit);
-    QWidget *symbolWidget = new QWidget();
-    symbolWidget->setLayout(symbolLayout);
+    QVBoxLayout *lableLayout = new QVBoxLayout();
+    lableLayout->addWidget(&symbol);
+    lableLayout->addWidget(&shares);
+    lableLayout->addWidget(&limit);
+    lableLayout->addWidget(&stop);
+    QWidget *lableWidget = new QWidget();
+    lableWidget->setLayout(lableLayout);
 
-    QHBoxLayout *sharesLayout = new QHBoxLayout();
-    sharesLayout->addWidget(&shares);
-    sharesLayout->addWidget(&sharesEdit);
-    QWidget *sharesWidget = new QWidget();
-    sharesWidget->setLayout(sharesLayout);
+    QVBoxLayout *editLayout = new QVBoxLayout();
+    editLayout->addWidget(&symbolEdit);
+    editLayout->addWidget(&sharesEdit);
+    editLayout->addWidget(&limitEdit);
+    editLayout->addWidget(&stopEdit);
+    editLayout->addWidget(&submit);
+    QWidget *editWidget = new QWidget();
+    editWidget->setLayout(editLayout);
 
-    QHBoxLayout *limitLayout = new QHBoxLayout();
-    limitLayout->addWidget(&limit);
-    limitLayout->addWidget(&limitEdit);
-    QWidget *limitWidget = new QWidget();
-    limitWidget->setLayout(limitLayout);
-
-    QHBoxLayout *stopLayout = new QHBoxLayout();
-    stopLayout->addWidget(&stop);
-    stopLayout->addWidget(&stopEdit);
-    QWidget *stopWidget = new QWidget();
-    stopWidget->setLayout(stopLayout);
-
-    QVBoxLayout *layout = new QVBoxLayout();
-    layout->addWidget(symbolWidget);
-    layout->addWidget(sharesWidget);
-    layout->addWidget(limitWidget);
-    layout->addWidget(stopWidget);
-    layout->addWidget(&submit);
-    QWidget *wid = new QWidget();
-    wid->setLayout(layout);
 
     //organize main layout
     QHBoxLayout *mainLayout = new QHBoxLayout();
     mainLayout->addWidget(orderWidget);
-    mainLayout->addWidget(wid);
+    mainLayout->addWidget(lableWidget);
+    mainLayout->addWidget(editWidget);
     QWidget *mainWidget = new QWidget();
     mainWidget->setLayout(mainLayout);
 
