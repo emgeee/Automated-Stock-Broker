@@ -24,13 +24,14 @@ MainWindow::MainWindow(QWidget *parent) :
     submit.setText("Submit");
 
     //set styles of widgets
-    submit.setStyleSheet("background-color:green; color:white; border-color:white; border:2px solid; border-radius:20px; width:15px; height:30px;");
+    submit.setStyleSheet("background-color:green; color:white; border-color:white; border:2px solid;");
 
     //organize buttons and drop down menu
     QVBoxLayout *orderList = new QVBoxLayout();
     orderList->addWidget(&buy);
     orderList->addWidget(&sell);
     orderList->addWidget(&dropdown);
+    orderList->addWidget(&submit);
     QWidget *orderWidget = new QWidget();
     orderWidget->setLayout(orderList);
 
@@ -42,13 +43,14 @@ MainWindow::MainWindow(QWidget *parent) :
     lableLayout->addWidget(&stop);
     QWidget *lableWidget = new QWidget();
     lableWidget->setLayout(lableLayout);
+    lableWidget->setStyleSheet("margin-bottom:5px;");
 
     QVBoxLayout *editLayout = new QVBoxLayout();
     editLayout->addWidget(&symbolEdit);
     editLayout->addWidget(&sharesEdit);
     editLayout->addWidget(&limitEdit);
     editLayout->addWidget(&stopEdit);
-    editLayout->addWidget(&submit);
+    //editLayout->addWidget(&submit);
     QWidget *editWidget = new QWidget();
     editWidget->setLayout(editLayout);
 
