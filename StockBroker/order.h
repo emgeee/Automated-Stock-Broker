@@ -28,6 +28,7 @@ public:
     void setStop(float);
     void setCallback(void (*f)(Order*));
     void executeCallback(Order*);
+    void setSymbol(QString symbolName);
 
 private:
     int m_shares;

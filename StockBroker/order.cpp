@@ -68,4 +68,9 @@ void Order::setStop(float value)
     m_stopPrice = value;
 }
 
+void Order::setSymbol(QString symbolName)
+{
+    m_stockSymbol = symbolName;
+}
+
 
