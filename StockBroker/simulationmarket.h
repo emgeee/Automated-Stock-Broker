@@ -7,7 +7,12 @@
 #include "QString"
 #include "QList"
 #include "QFile"
+#include "QDebug"
+#include "QStringList"
 
+
+// the stock struct is stored inside of a list of structs
+// this way the market can be tracked
 struct stock{
     QString name;
     QString tickerSymbol;
@@ -22,9 +27,9 @@ public:
     void run();
 
 
-    void generateFakeMarketFromFile(QFile inputFile);
+    void generateFakeMarketFromFile(QString fileName);
 
-    QList<*stock> *stocks;
+    QList<stock> *stocks;
 
 };
 
