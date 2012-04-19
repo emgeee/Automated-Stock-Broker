@@ -78,3 +78,13 @@ void simulationMarket::updateStockInMarket(QString ticker, int price, int quanti
 }
 
 }
+
+
+// Logs all of the price flucations to a text file
+// This is good to see whenever the market prices changes
+// it will be written to a file using a timer
+void simulationMarket::logStockPriceHistory()
+{
+
+
+}

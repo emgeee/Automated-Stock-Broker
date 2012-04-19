@@ -9,7 +9,7 @@
 #include "QFile"
 #include "QDebug"
 #include "QStringList"
-
+#include "QListIterator"
 
 // the stock struct is stored inside of a list of structs
 // this way the market can be tracked
@@ -26,6 +26,8 @@ public:
     simulationMarket();
     void run();
 
+
+    void logStockPriceHistory();
 
     void generateFakeMarketFromFile(QString fileName);
 
