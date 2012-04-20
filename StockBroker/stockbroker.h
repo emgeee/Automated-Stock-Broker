@@ -7,7 +7,7 @@
 #include <QDebug>
 
 
-class STOCKBROKERSHARED_EXPORT StockBroker {
+class STOCKBROKERSHARED_EXPORT StockBroker : public QObject{
 public:
     StockBroker(QString Symbol);
 

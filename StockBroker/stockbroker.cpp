@@ -118,10 +118,12 @@ void StockBroker::placeOrder(Order *o)
 void StockBroker::executeOrder(Order *o)
 {
     if(o->type() == MARKET_BUY){
-        qDebug() << "Executing Market Buy Order";
+        qDebug() << "Executing Market Buy Order: " << o->getSymbol();
+        qDebug() << "Date Placed: " << o->getDate();
         StockBroker::placeMarketBuyOrder(o->getSymbol(), o->getShares());
     }else if(o->type() == MARKET_SELL){
-        qDebug() << "Executing Market Sell Order";
+        qDebug() << "Executing Market Sell Order" << o->getSymbol();
+        qDebug() << "Date Placed: " << o->getDate();
         StockBroker::placeMarketSellOrder(o->getSymbol(), o->getShares());
     }
 
