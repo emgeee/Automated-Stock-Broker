@@ -42,7 +42,7 @@ void simulationMarket::generateFakeMarketFromFile(QString fileName){
             newStock->currentPrice = fields.at(1);
             newStock->quantityAvailable = fields.at(2).toInt();
 
-            stocks->append(*newStock);
+            stocks->append(newStock);
 
         }
         inputFile.close();
@@ -64,13 +64,13 @@ void simulationMarket::updateStockInMarket(QString ticker, int price, int quanti
 
         // if tickers match, found in List
         // remove from list, update then reinsert
-        if(stocks->at(i).tickerSymbol == ticker){
+        if(stocks->at(i)->tickerSymbol == ticker){
             stock *updatedStock = new stock();
             updatedStock->tickerSymbol = ticker;
             updatedStock->currentPrice = price;
             updatedStock->quantityAvailable = quantity;
 
-            stocks->append(*updatedStock);
+            stocks->append(updatedStock);
 
             stocks->removeAt(i);
 }
