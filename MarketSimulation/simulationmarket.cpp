@@ -136,3 +136,14 @@ bool simulationMarket::updateStockPrice(QString ticker, float offSet)
 
     return false;
 }
+
+QStringList simulationMarket::getEntireMarket()
+{
+    QStringList marketList;
+    foreach(stock *s, stocks){
+        QString stockinfo = s->tickerSymbol + " - " + QString::number(s->currentPrice) + " " + QString::number(s->quantityAvailable);
+        marketList.append(stockinfo);
+    }
+
+    return marketList;
+}

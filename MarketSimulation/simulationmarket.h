@@ -43,6 +43,8 @@ public:
     float getPrice(QString ticker);
     float randFloatGenerator(float a, float b);
 
+    QStringList getEntireMarket();
+
     QList<stock*> stocks;
     QTimer *timer;
     int timerCount;
