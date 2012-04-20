@@ -153,13 +153,55 @@ void MainWindow::buttonPushed() {
         return;
     }
 
+    if(type == "Market") {
+        if(buyOrSell == "buy") {
+            orderType = MARKET_BUY;
+        }
+        else {
+            orderType = MARKET_SELL;
+        }
+    }
+    else if(type == "Stop") {
+        if(buyOrSell == "buy") {
+            orderType = BUY_STOP;
+        }
+        else {
+            orderType = SELL_STOP;
+        }
+    }
+    else if(type == "Limit") {
+        if(buyOrSell == "buy") {
+            orderType = BUY_LIMIT;
+        }
+        else {
+            orderType = SELL_LIMIT;
+        }
+    }
+    else if(type == "Stop-Limit") {
+        if(buyOrSell == "buy") {
+            orderType = BUY_STOP_LIMIT;
+        }
+        else {
+            orderType = SELL_STOP_LIMIT;
+        }
+    }
+
+    //determine the user;
+    user = dropdown1.currentIndex() + 1;
+
     //broker = new SimBroker(symbolEdit.text());
     //broker->updateMarket(30);
-    Order *o = new Order(BUY_LIMIT,"GOOG",1, 11, 23., 20.);
+    Order *o = new Order(orderType,symbolEdit.text(),user, sharesEdit.text().toInt(), stopEdit.text().toInt(), limitEdit.text().toInt());
     o->setCallback(&callbackTest);
 
     broker->placeOrder(o);
 
-    broker->updateMarket(10.4);
+    broker->updateMarket(market->getPrice(symbolEdit.text()));
+
+    //clear the line edits
+    symbolEdit.clear();
+    sharesEdit.clear();
+    stopEdit.clear();
+    limitEdit.clear();
 }
 
