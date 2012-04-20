@@ -129,7 +129,11 @@ bool simulationMarket::updateStockPrice(QString ticker, float offSet)
     if(doesStockExist(ticker)){
         foreach(stock *s, stocks){
             if(s->tickerSymbol == ticker){
-               s->currentPrice = s->currentPrice + offSet;
+               if(s->currentPrice + offSet > 0 ){
+                    s->currentPrice = s->currentPrice + offSet;
+               } else {
+                    s->currentPrice = 0; // STOCK CRASHED
+               }
             }
         }
     }
