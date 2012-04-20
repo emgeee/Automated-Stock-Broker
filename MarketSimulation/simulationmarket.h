@@ -51,7 +51,7 @@ public:
     QMutex mutex;
 
 public slots:
-    void fluctuatePrices();
+    void fluctuatePrices(float low, float high);
 };
 
 #endif // SIMULATIONMARKET_H
