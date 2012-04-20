@@ -36,13 +36,17 @@ public:
 
     bool canProccessOrder(QString ticker, int quantity);
     bool doesStockExist(QString ticker);
-    bool updateStockPrice(QString ticker);
+    bool updateStockPrice(QString ticker, float offSet);
 
     float getPrice(QString ticker);
     float randFloatGenerator(float a, float b);
 
     QList<stock*> stocks;
+    QTimer *timer;
+    int timerCount;
 
+public slots:
+    void timerTimeout();
 };
 
 #endif // SIMULATIONMARKET_H
