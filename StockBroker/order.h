@@ -13,7 +13,7 @@ class Order : public QObject
 {
     Q_OBJECT
 public:
-    explicit Order(T_ORDER, QString, int, float stop = 0, float limit = 0, QObject *parent = 0);
+    explicit Order(T_ORDER, QString, int user, int, float stop = 0, float limit = 0, QObject *parent = 0);
 
     // Getter method for type of order
     T_ORDER type();
@@ -22,6 +22,7 @@ public:
     float getStop();
     QString getSymbol();
     QDateTime getDate();
+    int getUser();
 
     void setType(T_ORDER t);
     void setShares(int);
@@ -31,10 +32,12 @@ public:
     void executeCallback(Order*);
     void setDate(QDateTime);
 
+
     bool operator<(const Order&) const;
 
 private:
     int m_shares;
+    int m_userID;
     float m_limitPrice;
     float m_stopPrice;
 
