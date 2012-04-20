@@ -4,7 +4,6 @@
 #
 #-------------------------------------------------
 
-QT       -= gui
 
 TARGET = StockBroker
 TEMPLATE = lib
@@ -18,21 +17,4 @@ HEADERS += stockbroker.h\
         StockBroker_global.h \
     order.h \
 
-symbian {
-    MMP_RULES += EXPORTUNFROZEN
-    TARGET.UID3 = 0xE5179F77
-    TARGET.CAPABILITY = 
-    TARGET.EPOCALLOWDLLDATA = 1
-    addFiles.sources = StockBroker.dll
-    addFiles.path = !:/sys/bin
-    DEPLOYMENT += addFiles
-}
 
-unix:!symbian {
-    maemo5 {
-        target.path = /opt/usr/lib
-    } else {
-        target.path = /usr/lib
-    }
-    INSTALLS += target
-}

@@ -10,15 +10,23 @@ TARGET = MarketSimulation
 TEMPLATE = app
 
 
+INCLUDEPATH = ../StockBroker
+
 SOURCES += main.cpp\
-        mainwindow.cpp \
-        simulationmarket.cpp \
-    simbroker.cpp
+            mainwindow.cpp \
+            simulationmarket.cpp \
+            simbroker.cpp
 
 HEADERS  += mainwindow.h \
             simulationmarket.h \
-            simbroker.h
+            simbroker.h \
+            stockbroker.h \
+            order.h
+
 
 FORMS    += mainwindow.ui
 
-INCLUDEPATH = ../StockBroker
+unix:!macx:!symbian: LIBS += -L$$PWD/../StockBroker/ -lStockBroker
+
+INCLUDEPATH += $$PWD/../StockBroker
+DEPENDPATH += $$PWD/../StockBroker

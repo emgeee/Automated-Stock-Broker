@@ -7,7 +7,8 @@
 #include <QDebug>
 
 
-class STOCKBROKERSHARED_EXPORT StockBroker : public QObject{
+class STOCKBROKERSHARED_EXPORT StockBroker {
+
 public:
     // Virtual Callback function to place a market order
     virtual bool placeMarketBuyOrder(QString symbol, int shares) = 0;
