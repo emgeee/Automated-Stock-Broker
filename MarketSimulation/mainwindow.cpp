@@ -99,6 +99,12 @@ MainWindow::MainWindow(QWidget *parent) :
     timer->setInterval(2000);
     connect(timer, SIGNAL(timeout()), this, SLOT(timerTimeout()));
     timer->start();
+
+    marketFluxTimer = new QTimer();
+    marketFluxTimer->setInterval(1000);
+    connect(marketFluxTimer,SIGNAL(timeout()),this,SLOT(marketFluxTimerTimeout()));
+    marketFluxTimer->start();
+
 }
 
 MainWindow::~MainWindow()
@@ -108,11 +114,18 @@ MainWindow::~MainWindow()
 
 void MainWindow::timerTimeout()
 {
+
     marketWindow.clear();
     QStringList marketList = market->getEntireMarket();
     for(int i = 0; i<marketList.size(); i++) {
         marketWindow.append(marketList.at(i));
     }
+}
+
+void MainWindow::marketFluxTimerTimeout()
+{
+    market->fluctuatePrices(0.0,5.6);
+
 }
 
 

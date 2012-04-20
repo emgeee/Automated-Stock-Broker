@@ -46,10 +46,12 @@ private:
 
     SimBroker *broker;
     QTimer *timer;
+    QTimer *marketFluxTimer;
     simulationMarket *market;
 
 public slots:
     void timerTimeout();
+    void marketFluxTimerTimeout();
 };
 
 #endif // MAINWINDOW_H
