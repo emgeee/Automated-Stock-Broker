@@ -1,0 +1,4 @@
+# QT sources
+*.so
+*.o
+moc_*
