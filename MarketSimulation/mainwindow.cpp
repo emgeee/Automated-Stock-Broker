@@ -16,6 +16,10 @@ MainWindow::MainWindow(QWidget *parent) :
     market->printStocks();
     // END TEST MARKET ///
 
+    broker = new SimBroker("GOOG");
+    broker->updateMarket(30);
+
+
     ui->setupUi(this);
     setWindowTitle("Automated Stock Broker");
 
@@ -123,7 +127,7 @@ void MainWindow::timerTimeout()
 
 void MainWindow::marketFluxTimerTimeout()
 {
-    market->fluctuatePrices(-6.9,5.6);
+    market->fluctuatePrices(-5,5);
 
 }
 
