@@ -38,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent) :
     dropdown.addItem("Stop-Limit");
     dropdown1.addItem("User 1");
     dropdown1.addItem("User 2");
+
+    //set text for radio buttons
     buy.setText("Buy");
     sell.setText("Sell");
 
@@ -51,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //set styles of widgets
     submit.setStyleSheet("background-color:green; color:white; border-color:white; border:2px solid;");
 
-    //organize buttons and drop down menu
+    //organize buttons and drop down menus
     QVBoxLayout *orderList = new QVBoxLayout();
     orderList->addWidget(&buy);
     orderList->addWidget(&sell);
@@ -98,16 +100,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setCentralWidget(finalWidget);
 
+    //initialize timer for market updates
     timer = new QTimer();
     timer->setInterval(2000);
     connect(timer, SIGNAL(timeout()), this, SLOT(timerTimeout()));
     timer->start();
 
+    //initialize timer for market flux
     marketFluxTimer = new QTimer();
     marketFluxTimer->setInterval(1000);
     connect(marketFluxTimer,SIGNAL(timeout()),this,SLOT(marketFluxTimerTimeout()));
     marketFluxTimer->start();
 
+    //connect the submit button to a slot
     connect(&submit, SIGNAL(clicked()), this, SLOT(buttonPushed()));
 }
 
@@ -118,9 +123,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::timerTimeout()
 {
-
+    //clear the text edit
     marketWindow.clear();
+    //get a list of the current market
     QStringList marketList = market->getEntireMarket();
+    //print each market statement to the text edit
     for(int i = 0; i<marketList.size(); i++) {
         marketWindow.append(marketList.at(i));
     }
@@ -136,15 +143,17 @@ void MainWindow::buttonPushed() {
     T_ORDER orderType;
     int user;
 
-    //determine the type of order
+    //determine the type of order to be placed
     QString type = dropdown.currentText();
     QString buyOrSell;
+    //determine if it is a buy or sell
     if(buy.isChecked()) {
         buyOrSell = "buy";
     }
     else if(sell.isChecked()) {
         buyOrSell = "sell";
     }
+    //if neither button is pushed show an error message
     else {
         QMessageBox msg;
         msg.setText("Please choose buy or sell");
@@ -153,6 +162,7 @@ void MainWindow::buttonPushed() {
         return;
     }
 
+    //determine the exact order type
     if(type == "Market") {
         if(buyOrSell == "buy") {
             orderType = MARKET_BUY;
@@ -191,11 +201,12 @@ void MainWindow::buttonPushed() {
 
     //broker = new SimBroker(symbolEdit.text());
     //broker->updateMarket(30);
+    //create and order using the Order class
     Order *o = new Order(orderType,symbolEdit.text(),user, sharesEdit.text().toInt(), stopEdit.text().toInt(), limitEdit.text().toInt());
     o->setCallback(&callbackTest);
 
+    //place the order and update the market
     broker->placeOrder(o);
-
     broker->updateMarket(market->getPrice(symbolEdit.text()));
 
     //clear the line edits
