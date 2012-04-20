@@ -9,18 +9,16 @@
 
 class STOCKBROKERSHARED_EXPORT StockBroker : public QObject{
 public:
-    StockBroker(QString Symbol);
-
-    // Callback function to place a market order
-    static bool *(placeMarketBuyOrder)(QString symbol, int shares);
-    static bool *(placeMarketSellOrder)(QString symbol, int shares);
+    // Virtual Callback function to place a market order
+    virtual bool placeMarketBuyOrder(QString symbol, int shares) = 0;
+    virtual bool placeMarketSellOrder(QString symbol, int shares) = 0;
 
     void updateMarket(float value);
     void placeOrder(Order *o);
 
     QString getSymbol();
 
-private:
+protected:
     float m_value;
 
     QList<Order*> *orderList;

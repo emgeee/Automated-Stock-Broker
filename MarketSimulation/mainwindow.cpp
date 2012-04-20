@@ -64,9 +64,15 @@ MainWindow::MainWindow(QWidget *parent) :
     mainWidget->setLayout(mainLayout);
 
     setCentralWidget(mainWidget);
+
+    broker = new SimBroker("GOOG");
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
+
+

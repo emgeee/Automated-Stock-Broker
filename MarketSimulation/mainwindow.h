@@ -9,6 +9,8 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QBoxLayout>
+#include "simbroker.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -36,6 +38,8 @@ private:
     QLineEdit sharesEdit;
     QLineEdit limitEdit;
     QLineEdit stopEdit;
+
+    SimBroker *broker;
 
 };
 

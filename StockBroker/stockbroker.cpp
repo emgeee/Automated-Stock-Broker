@@ -1,11 +1,6 @@
 #include "stockbroker.h"
 
 
-StockBroker::StockBroker(QString symbol) :
-    m_symbol(symbol)
-{
-    orderList = new QList<Order*>();
-}
 
 void StockBroker::updateMarket(float value)
 {
@@ -120,11 +115,11 @@ void StockBroker::executeOrder(Order *o)
     if(o->type() == MARKET_BUY){
         qDebug() << "Executing Market Buy Order: " << o->getSymbol();
         qDebug() << "Date Placed: " << o->getDate();
-        StockBroker::placeMarketBuyOrder(o->getSymbol(), o->getShares());
+        placeMarketBuyOrder(o->getSymbol(), o->getShares());
     }else if(o->type() == MARKET_SELL){
         qDebug() << "Executing Market Sell Order" << o->getSymbol();
         qDebug() << "Date Placed: " << o->getDate();
-        StockBroker::placeMarketSellOrder(o->getSymbol(), o->getShares());
+        placeMarketSellOrder(o->getSymbol(), o->getShares());
     }
 
     o->executeCallback(o);

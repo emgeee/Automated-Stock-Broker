@@ -12,9 +12,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-        simulationmarket.cpp
+        simulationmarket.cpp \
+    simbroker.cpp
 
 HEADERS  += mainwindow.h \
-            simulationmarket.h
+            simulationmarket.h \
+    simbroker.h
 
 FORMS    += mainwindow.ui
