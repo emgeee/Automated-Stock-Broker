@@ -86,7 +86,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QWidget *mainWidget = new QWidget();
     mainWidget->setLayout(mainLayout);
 
-    setCentralWidget(mainWidget);
+    marketWindow.setReadOnly(true);
+    QVBoxLayout *finalLayout = new QVBoxLayout();
+    finalLayout->addWidget(mainWidget);
+    finalLayout->addWidget(&marketWindow);
+    QWidget *finalWidget = new QWidget();
+    finalWidget->setLayout(finalLayout);
+
+    setCentralWidget(finalWidget);
 
 }
 

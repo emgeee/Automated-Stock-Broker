@@ -6,6 +6,7 @@
 #include <QRadioButton>
 #include <QLabel>
 #include <QLineEdit>
+#include <QTextEdit>
 #include <QPushButton>
 #include <QBoxLayout>
 #include <QTimer>
@@ -41,6 +42,7 @@ private:
     QLineEdit sharesEdit;
     QLineEdit limitEdit;
     QLineEdit stopEdit;
+    QTextEdit marketWindow;
 
     SimBroker *broker;
     QTimer *timer;
