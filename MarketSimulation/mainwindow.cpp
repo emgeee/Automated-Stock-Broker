@@ -124,7 +124,7 @@ void MainWindow::timerTimeout()
 
 void MainWindow::marketFluxTimerTimeout()
 {
-    market->fluctuatePrices(0.0,5.6);
+    market->fluctuatePrices(-6.9,5.6);
 
 }
 
