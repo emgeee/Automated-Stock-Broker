@@ -95,6 +95,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setCentralWidget(finalWidget);
 
+    timer = new QTimer();
+    timer->setInterval(2000);
+    connect(timer, SIGNAL(timeout()), this, SLOT(timerTimeout()));
+    timer->start();
 }
 
 MainWindow::~MainWindow()
@@ -104,7 +108,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::timerTimeout()
 {
-
+    marketWindow.clear();
+    QStringList marketList = market->getEntireMarket();
+    for(int i = 0; i<marketList.size(); i++) {
+        marketWindow.append(marketList.at(i));
+    }
 }
 
 
