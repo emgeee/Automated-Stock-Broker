@@ -15,6 +15,9 @@ void StockBroker::updateMarket(float value)
     // iterate through all lists and convert appropriate orders to new orders
     // and execute any market orders
     for(int i = 0; i < orderList->length(); i++){
+        if(i < 0)
+            break;
+
         switch (list[i]->type()){
         case BUY_STOP:
             if(list[i]->getStop() >= m_value){

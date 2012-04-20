@@ -16,18 +16,6 @@ MainWindow::MainWindow(QWidget *parent) :
     market->printStocks();
     // END TEST MARKET ///
 
-    /////// TEST CODE
-    broker = new SimBroker("GOOG");
-    broker->updateMarket(30);
-    Order *o = new Order(BUY_LIMIT,"GOOG",1, 11, 23., 20.);
-    o->setCallback(&callbackTest);
-
-    broker->placeOrder(o);
-
-    broker->updateMarket(10.4);
-
-    ///////
-
     ui->setupUi(this);
     setWindowTitle("Automated Stock Broker");
 
