@@ -1,5 +1,13 @@
-Hey look I made a change
+Description
 
-""
 
-Removing a change.
+
+Install Instructions:
+In the root directory run:
+
+qmake
+make
+sudo cp StockBroker/libStockBroker.so* /lib
+
+After that you will be able to run the MarketSimulation program
+in the MartketSimulation directory

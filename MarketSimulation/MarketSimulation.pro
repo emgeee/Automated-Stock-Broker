@@ -26,7 +26,8 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui
 
-unix:!macx:!symbian: LIBS += -L$$PWD/../StockBroker/ -lStockBroker
+
+unix:!macx:!symbian: LIBS += -L$$OUT_PWD/../StockBroker/ -lStockBroker
 
 INCLUDEPATH += $$PWD/../StockBroker
 DEPENDPATH += $$PWD/../StockBroker
