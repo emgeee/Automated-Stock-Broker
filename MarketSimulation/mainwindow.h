@@ -10,6 +10,7 @@
 #include <QPushButton>
 #include <QBoxLayout>
 #include <QTimer>
+#include <QMessageBox>
 
 #include "simbroker.h"
 #include "stockbroker.h"
@@ -53,6 +54,7 @@ private:
 public slots:
     void timerTimeout();
     void marketFluxTimerTimeout();
+    void buttonPushed();
 };
 
 #endif // MAINWINDOW_H

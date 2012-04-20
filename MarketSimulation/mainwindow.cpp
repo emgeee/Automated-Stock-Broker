@@ -108,6 +108,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(marketFluxTimer,SIGNAL(timeout()),this,SLOT(marketFluxTimerTimeout()));
     marketFluxTimer->start();
 
+    connect(&submit, SIGNAL(clicked()), this, SLOT(buttonPushed()));
 }
 
 MainWindow::~MainWindow()
@@ -131,5 +132,34 @@ void MainWindow::marketFluxTimerTimeout()
 
 }
 
+void MainWindow::buttonPushed() {
+    T_ORDER orderType;
+    int user;
 
+    //determine the type of order
+    QString type = dropdown.currentText();
+    QString buyOrSell;
+    if(buy.isChecked()) {
+        buyOrSell = "buy";
+    }
+    else if(sell.isChecked()) {
+        buyOrSell = "sell";
+    }
+    else {
+        QMessageBox msg;
+        msg.setText("Please choose buy or sell");
+        msg.setStandardButtons(QMessageBox::Ok);
+        msg.exec();
+        return;
+    }
+
+    //broker = new SimBroker(symbolEdit.text());
+    //broker->updateMarket(30);
+    Order *o = new Order(BUY_LIMIT,"GOOG",1, 11, 23., 20.);
+    o->setCallback(&callbackTest);
+
+    broker->placeOrder(o);
+
+    broker->updateMarket(10.4);
+}
 
