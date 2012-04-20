@@ -31,6 +31,7 @@ public:
 private:
     Ui::MainWindow *ui;
     QComboBox dropdown;
+    QComboBox dropdown1;
     QRadioButton buy;
     QRadioButton sell;
     QPushButton submit;

@@ -36,6 +36,8 @@ MainWindow::MainWindow(QWidget *parent) :
     dropdown.addItem("Stop");
     dropdown.addItem("Limit");
     dropdown.addItem("Stop-Limit");
+    dropdown1.addItem("User 1");
+    dropdown1.addItem("User 2");
     buy.setText("Buy");
     sell.setText("Sell");
 
@@ -54,6 +56,7 @@ MainWindow::MainWindow(QWidget *parent) :
     orderList->addWidget(&buy);
     orderList->addWidget(&sell);
     orderList->addWidget(&dropdown);
+    orderList->addWidget(&dropdown1);
     orderList->addWidget(&submit);
     QWidget *orderWidget = new QWidget();
     orderWidget->setLayout(orderList);
