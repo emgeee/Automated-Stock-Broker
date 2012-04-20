@@ -13,6 +13,8 @@ void StockBroker::updateMarket(float value)
     // create a local reference for easier access
     QList<Order*> &list = *orderList;
 
+    QList<Order*> executionList;
+
     // iterate through all lists and convert appropriate orders to new orders
     // and execute any market orders
     for(int i = 0; i < orderList->length(); i++){
@@ -20,7 +22,7 @@ void StockBroker::updateMarket(float value)
         case BUY_STOP:
             if(list[i]->getStop() >= m_value){
                 list[i]->setType(MARKET_BUY);
-                executeOrder(list[i]);
+                executionList << list[i];
 
                 //remove order after execution
                 list.removeAt(i);
@@ -31,7 +33,7 @@ void StockBroker::updateMarket(float value)
         case BUY_LIMIT:
             if(list[i]->getLimit() <= m_value){
                 list[i]->setType(MARKET_BUY);
-                executeOrder(list[i]);
+                executionList << list[i];
 
                 //remove order after execution
                 list.removeAt(i);
@@ -52,7 +54,7 @@ void StockBroker::updateMarket(float value)
         case SELL_STOP:
             if(list[i]->getStop() <= m_value){
                 list[i]->setType(MARKET_BUY);
-                executeOrder(list[i]);
+                executionList << list[i];
 
                 //remove order after execution
                 list.removeAt(i);
@@ -63,7 +65,7 @@ void StockBroker::updateMarket(float value)
         case SELL_LIMIT:
             if(list[i]->getLimit() >= m_value){
                 list[i]->setType(MARKET_BUY);
-                executeOrder(list[i]);
+                executionList << list[i];
 
                 //remove order after execution
                 list.removeAt(i);
@@ -86,6 +88,15 @@ void StockBroker::updateMarket(float value)
             break;
         }
     }
+
+    // sort the execution list based off of time placed
+    qSort(executionList);
+
+    // Execute orders
+    foreach(Order *o, executionList){
+        executeOrder(o);
+    }
+
 }
 
 // Add a new order to the order list
@@ -114,20 +125,5 @@ void StockBroker::executeOrder(Order *o)
     }
 
     o->executeCallback(o);
-
-}
-
-static bool StockBroker::*(placeMarketBuyOrder)(QString symbol, int shares)
-{
-
-    return 0;
-
-}
-
-
-static bool StockBroker::*(placeMarketSellOrder)(QString symbol, int shares)
-{
-
-    return 0;
 
 }
