@@ -56,8 +56,11 @@ void simulationMarket::generateFakeMarketFromFile(QString fileName){
 //      price flucation
 //
 // OCCURS, this method will update the stock within the Market List
+// Different types of returns:
+// 1 = successfully updated the specific stock
+// 2 = can't do so, that many stocks doesn't exist
 
-void simulationMarket::updateStockInMarket(QString ticker, int price, int quantity)
+int simulationMarket::updateStockInMarket(QString ticker, int price, int quantity)
 {
 
     for(int i = 0; i < stocks->size(); ++i){
@@ -65,6 +68,11 @@ void simulationMarket::updateStockInMarket(QString ticker, int price, int quanti
         // if tickers match, found in List
         // remove from list, update then reinsert
         if(stocks->at(i)->tickerSymbol == ticker){
+
+            if(stocks->at(i)->quantityAvailable < quantity){
+                return 2;
+            }
+
             stock *updatedStock = new stock();
             updatedStock->tickerSymbol = ticker;
             updatedStock->currentPrice = price;
@@ -77,6 +85,7 @@ void simulationMarket::updateStockInMarket(QString ticker, int price, int quanti
 
 }
 
+    return 1;
 }
 
 
