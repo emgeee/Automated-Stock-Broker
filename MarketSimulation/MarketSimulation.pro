@@ -11,8 +11,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+        simulationmarket.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+            simulationmarket.cpp
 
 FORMS    += mainwindow.ui
