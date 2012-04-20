@@ -47,7 +47,7 @@ private:
     simulationMarket *market;
 
 public slots:
-    //void timerTimeout();
+    void timerTimeout();
 };
 
 #endif // MAINWINDOW_H

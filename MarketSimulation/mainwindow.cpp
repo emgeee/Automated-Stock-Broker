@@ -9,6 +9,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    // TEST MARKET //
+
+    market = new simulationMarket();
+    market->generateFakeMarketFromFile("tester.txt");
+    market->printStocks();
+    // END TEST MARKET ///
+
     /////// TEST CODE
     broker = new SimBroker("GOOG");
     broker->updateMarket(30);
@@ -88,6 +95,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::timerTimeout()
+{
+
+}
 
 
 
