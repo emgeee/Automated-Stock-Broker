@@ -17,6 +17,7 @@ void StockBroker::updateMarket(float value)
         switch (list[i]->type()){
         case BUY_STOP:
             if(list[i]->getStop() >= m_value){
+                qDebug() << list[i]->getSymbol() << " buy stop price triggered";
                 list[i]->setType(MARKET_BUY);
                 executionList << list[i];
 
@@ -28,6 +29,7 @@ void StockBroker::updateMarket(float value)
 
         case BUY_LIMIT:
             if(list[i]->getLimit() <= m_value){
+                qDebug() << list[i]->getSymbol() << " buy limit price triggered";
                 list[i]->setType(MARKET_BUY);
                 executionList << list[i];
 
@@ -40,6 +42,7 @@ void StockBroker::updateMarket(float value)
         case BUY_STOP_LIMIT:
             if(list[i]->getStop() >= m_value){
                 //becomes Buy limit
+                qDebug() << list[i]->getSymbol() << " buy stop-limit price triggered";
                 list[i]->setType(BUY_LIMIT);
 
                 //Must recheck if the new limit order should be executed
@@ -49,6 +52,7 @@ void StockBroker::updateMarket(float value)
 
         case SELL_STOP:
             if(list[i]->getStop() <= m_value){
+                qDebug() << list[i]->getSymbol() << " sell stop price triggered";
                 list[i]->setType(MARKET_BUY);
                 executionList << list[i];
 
@@ -60,6 +64,7 @@ void StockBroker::updateMarket(float value)
 
         case SELL_LIMIT:
             if(list[i]->getLimit() >= m_value){
+                qDebug() << list[i]->getSymbol() << " sell limit price triggered";
                 list[i]->setType(MARKET_BUY);
                 executionList << list[i];
 
@@ -72,6 +77,7 @@ void StockBroker::updateMarket(float value)
         case SELL_STOP_LIMIT:
             if(list[i]->getStop() <= m_value){
                 //becomes Buy limit
+                qDebug() << list[i]->getSymbol() << " sell stop-limit price triggered";
                 list[i]->setType(BUY_LIMIT);
 
                 //Must recheck if the new limit order should be executed

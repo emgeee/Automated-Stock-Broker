@@ -1,13 +1,20 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void callbackTest(Order *o){
+    qDebug() << "Wee callback " << o->getSymbol() ;
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     broker = new SimBroker("GOOG");
-    Order *o = new Order(MARKET_BUY,"GOOG",100, 23, 30);
+    Order *o = new Order(BUY_LIMIT,"GOOG",100, 23, 30);
+    o->setCallback(&callbackTest);
     broker->placeOrder(o);
+
+    broker->updateMarket(22.4);
 
     ui->setupUi(this);
     setWindowTitle("Automated Stock Broker");
