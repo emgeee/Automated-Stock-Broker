@@ -5,6 +5,7 @@ Order::Order(T_ORDER type, QString symbol, int shares, float stop, float limit, 
     QObject(parent), m_typeOfOrder(type), m_stockSymbol(symbol), m_shares(shares), m_stopPrice(stop), m_limitPrice(limit)
 {
     callBack = NULL;
+    m_timePlaced = QDateTime::currentDateTime();
 }
 
 // If this works...
