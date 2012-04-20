@@ -8,9 +8,12 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QBoxLayout>
+#include <QTimer>
 
 #include "simbroker.h"
 #include "stockbroker.h"
+#include "simulationmarket.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -40,7 +43,11 @@ private:
     QLineEdit stopEdit;
 
     SimBroker *broker;
+    QTimer *timer;
+    simulationMarket *market;
 
+private slots:
+    void timerTimeout();
 };
 
 #endif // MAINWINDOW_H
