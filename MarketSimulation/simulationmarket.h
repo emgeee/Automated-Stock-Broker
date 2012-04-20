@@ -10,13 +10,16 @@
 #include "QDebug"
 #include "QStringList"
 #include "QListIterator"
+#include "QTimer"
+#include "QTime"
+
 
 // the stock struct is stored inside of a list of structs
 // this way the market can be tracked
 struct stock{
     QString name;
     QString tickerSymbol;
-    QString currentPrice;
+    float currentPrice;
     int quantityAvailable;
 };
 
@@ -27,12 +30,18 @@ public:
     void run();
 
 
-    void logStockPriceHistory();
 
+    void printStocks();
     void generateFakeMarketFromFile(QString fileName);
 
-    int updateStockInMarket(QString ticker, int price, int quantity);
-    QList<stock*> *stocks;
+    bool canProccessOrder(QString ticker, int quantity);
+    bool doesStockExist(QString ticker);
+    bool updateStockPrice(QString ticker);
+
+    float getPrice(QString ticker);
+    float randFloatGenerator(float a, float b);
+
+    QList<stock*> stocks;
 
 };
 
