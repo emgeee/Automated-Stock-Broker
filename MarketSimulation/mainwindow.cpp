@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 void callbackTest(Order *o){
-    qDebug() << "Wee callback " << o->getSymbol() ;
+    qDebug() << o->getUser()<< "purchased" << o->getSymbol() ;
 }
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     /////// TEST CODE
     broker = new SimBroker("GOOG");
     broker->updateMarket(30);
-    Order *o = new Order(BUY_LIMIT,"GOOG",11, 23, 2);
+    Order *o = new Order(BUY_LIMIT,"GOOG",1, 11, 23., 20.);
     o->setCallback(&callbackTest);
 
     broker->placeOrder(o);

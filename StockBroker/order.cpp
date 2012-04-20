@@ -1,8 +1,9 @@
 #include "order.h"
 
 // Constructor
-Order::Order(T_ORDER type, QString symbol, int shares, float stop, float limit, QObject *parent):
-    QObject(parent), m_typeOfOrder(type), m_stockSymbol(symbol), m_shares(shares), m_stopPrice(stop), m_limitPrice(limit)
+Order::Order(T_ORDER type, QString symbol, int user, int shares, float stop, float limit, QObject *parent):
+    QObject(parent), m_typeOfOrder(type), m_stockSymbol(symbol), m_shares(shares),
+    m_stopPrice(stop), m_limitPrice(limit), m_userID(user)
 {
     callBack = NULL;
     m_timePlaced = QDateTime::currentDateTime();
@@ -84,4 +85,9 @@ void Order::setDate(QDateTime d)
 bool Order::operator<(const Order &o) const
 {
     return (m_timePlaced < o.m_timePlaced);
+}
+
+int Order::getUser()
+{
+    return m_userID;
 }
