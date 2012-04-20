@@ -5,6 +5,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    broker = new SimBroker("GOOG");
+    Order o(MARKET_BUY,"GOOG",100, 23, 30);
+   // broker->placeOrder(o);
+
     ui->setupUi(this);
     setWindowTitle("Automated Stock Broker");
 
@@ -65,7 +69,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setCentralWidget(mainWidget);
 
-    broker = new SimBroker("GOOG");
 }
 
 MainWindow::~MainWindow()

@@ -17,6 +17,8 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
             simulationmarket.h \
-    simbroker.h
+            simbroker.h
 
 FORMS    += mainwindow.ui
+
+INCLUDEPATH = ../StockBroker

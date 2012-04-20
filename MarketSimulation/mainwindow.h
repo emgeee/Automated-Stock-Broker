@@ -2,15 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "../StockBroker/stockbroker.h"
 #include <QComboBox>
 #include <QRadioButton>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QBoxLayout>
-#include "simbroker.h"
 
+#include "simbroker.h"
+#include "stockbroker.h"
 
 namespace Ui {
 class MainWindow;
