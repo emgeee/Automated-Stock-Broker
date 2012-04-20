@@ -14,8 +14,9 @@ void simulationMarket::run(){
 void simulationMarket::fluctuatePrices(float low, float high)
 {
 
-    float flucation = randFloatGenerator(low,high);
+
     foreach(stock *s, stocks){
+       float flucation = randFloatGenerator(low,high);
        updateStockPrice(s->tickerSymbol,flucation);
     }
 
