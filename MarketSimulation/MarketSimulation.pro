@@ -15,6 +15,6 @@ SOURCES += main.cpp\
         simulationmarket.cpp
 
 HEADERS  += mainwindow.h \
-            simulationmarket.cpp
+            simulationmarket.h
 
 FORMS    += mainwindow.ui

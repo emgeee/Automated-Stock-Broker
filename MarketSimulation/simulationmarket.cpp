@@ -23,7 +23,7 @@ void simulationMarket::generateFakeMarketFromFile(QString fileName){
 
 
     if(!inputFile.open(QIODevice::ReadOnly)){
-        qDebug () << "Error with file..." << endl;
+        qDebug () << "Error reading " << fileName << endl;
     }
 
     else {
