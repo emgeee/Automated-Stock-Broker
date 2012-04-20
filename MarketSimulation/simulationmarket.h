@@ -51,7 +51,7 @@ public:
     QMutex mutex;
 
 public slots:
-    void timerTimeout();
+    void fluctuatePrices();
 };
 
 #endif // SIMULATIONMARKET_H

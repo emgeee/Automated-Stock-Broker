@@ -11,7 +11,7 @@ void simulationMarket::run(){
 
 }
 
-void simulationMarket::timerTimeout()
+void simulationMarket::fluctuatePrices()
 {
 
     float flucation = randFloatGenerator(0.0, 25);
