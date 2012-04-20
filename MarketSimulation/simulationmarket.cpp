@@ -5,10 +5,19 @@ simulationMarket::simulationMarket()
 
 }
 
-// handles updating the values from orders placed
+
 void simulationMarket::run(){
 
 
+}
+
+void simulationMarket::timerTimeout()
+{
+
+    float flucation = randFloatGenerator(0.0, 25);
+    foreach(stock *s, stocks){
+       updateStockPrice(s->tickerSymbol,flucation);
+    }
 
 }
 
@@ -114,4 +123,17 @@ float simulationMarket::randFloatGenerator(float a, float b)
     uint seed = t.msec();
     srand(seed);
     return ((b-a)*(float(rand())/RAND_MAX)) + a;
+}
+
+bool simulationMarket::updateStockPrice(QString ticker, float offSet)
+{
+    if(doesStockExist(ticker)){
+        foreach(stock *s, stocks){
+            if(s->tickerSymbol == ticker){
+               s->currentPrice = s->currentPrice + offSet;
+            }
+        }
+    }
+
+    return false;
 }

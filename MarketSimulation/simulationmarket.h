@@ -12,6 +12,7 @@
 #include "QListIterator"
 #include "QTimer"
 #include "QTime"
+#include "QMutex"
 
 
 // the stock struct is stored inside of a list of structs
@@ -44,6 +45,7 @@ public:
     QList<stock*> stocks;
     QTimer *timer;
     int timerCount;
+    QMutex mutex;
 
 public slots:
     void timerTimeout();
