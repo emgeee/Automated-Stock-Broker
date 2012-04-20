@@ -8,12 +8,12 @@ SimBroker::SimBroker(QString symbol)
 
 bool SimBroker::placeMarketBuyOrder(QString symbol, int shares)
 {
-    qDebug() << shares << " sold of " << symbol;
+    qDebug() << shares << " bought of " << symbol;
     return true;
 }
 
 bool SimBroker::placeMarketSellOrder(QString symbol, int shares)
 {
-    qDebug() << shares << " bought of " << symbol;
+    qDebug() << shares << " sold of " << symbol;
     return true;
 }
