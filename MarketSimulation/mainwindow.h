@@ -46,8 +46,8 @@ private:
     QTimer *timer;
     simulationMarket *market;
 
-private slots:
-    void timerTimeout();
+public slots:
+    //void timerTimeout();
 };
 
 #endif // MAINWINDOW_H
