@@ -29,11 +29,9 @@ public:
     void setStop(float);
     void setCallback(void (*f)(Order*));
     void executeCallback(Order*);
-
-    void setSymbol(QString symbolName);
-
     void setDate(QDateTime);
 
+    bool operator<(const Order&) const;
 
 private:
     int m_shares;

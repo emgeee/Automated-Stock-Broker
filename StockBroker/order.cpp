@@ -68,11 +68,6 @@ void Order::setStop(float value)
     m_stopPrice = value;
 }
 
-void Order::setSymbol(QString symbolName)
-{
-    m_stockSymbol = symbolName;
-}
-
 
 QDateTime Order::getDate()
 {
@@ -83,4 +78,9 @@ QDateTime Order::getDate()
 void Order::setDate(QDateTime d)
 {
     m_timePlaced = d;
+}
+
+bool Order::operator<(const Order &o) const
+{
+    return (m_timePlaced < o.m_timePlaced);
 }
