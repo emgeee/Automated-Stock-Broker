@@ -1,7 +1,8 @@
 #include "stockbroker.h"
 
 
-StockBroker::StockBroker()
+StockBroker::StockBroker(QString symbol) :
+    m_symbol(symbol)
 {
     orderList = new QList<Order*>();
 }
@@ -125,5 +126,13 @@ void StockBroker::executeOrder(Order *o)
     }
 
     o->executeCallback(o);
-
 }
+
+
+QString StockBroker::getSymbol()
+{
+    return m_symbol;
+}
+
+
+
