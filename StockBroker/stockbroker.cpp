@@ -5,6 +5,7 @@
 void StockBroker::updateMarket(float value)
 {
     m_value = value;
+    qDebug() << "Market Updated to " << value;
 
     // create a local reference for easier access
     QList<Order*> &list = *orderList;
@@ -28,7 +29,7 @@ void StockBroker::updateMarket(float value)
             break;
 
         case BUY_LIMIT:
-            if(list[i]->getLimit() <= m_value){
+            if(list[i]->getLimit() >= m_value){
                 qDebug() << list[i]->getSymbol() << " buy limit price triggered";
                 list[i]->setType(MARKET_BUY);
                 executionList << list[i];
@@ -63,7 +64,7 @@ void StockBroker::updateMarket(float value)
             break;
 
         case SELL_LIMIT:
-            if(list[i]->getLimit() >= m_value){
+            if(list[i]->getLimit() <= m_value){
                 qDebug() << list[i]->getSymbol() << " sell limit price triggered";
                 list[i]->setType(MARKET_BUY);
                 executionList << list[i];
@@ -104,7 +105,7 @@ void StockBroker::updateMarket(float value)
 // Add a new order to the order list
 void StockBroker::placeOrder(Order *o)
 {
-
+    qDebug() << "New order placed of type " << o->type();
     // execute market orders immediately
     if(o->type() == MARKET_BUY || o->type() == MARKET_SELL){
         executeOrder(o);
