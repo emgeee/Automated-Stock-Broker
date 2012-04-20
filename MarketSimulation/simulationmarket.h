@@ -15,6 +15,7 @@
 #include "QMutex"
 
 
+
 // the stock struct is stored inside of a list of structs
 // this way the market can be tracked
 struct stock{
