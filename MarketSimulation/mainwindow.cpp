@@ -199,7 +199,7 @@ void MainWindow::buttonPushed() {
 
     //place the order and update the market
     broker->placeOrder(o);
-    broker->updateMarket(market->getPrice(symbolEdit.text()));
+    //broker->updateMarket(market->getPrice(symbolEdit.text()));
 
     //clear the line edits
     symbolEdit.clear();

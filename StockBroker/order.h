@@ -15,6 +15,26 @@ class Order : public QObject
 public:
     explicit Order(T_ORDER, QString, int user, int, float stop = 0, float limit = 0, QObject *parent = 0);
 
+    /*
+      Each of the variables use should have a self explanatory name and they can be set using the
+      following methods.
+
+      share - the number of shares in the order
+      userId - a unique number identifying a customer
+      limitPrice - the limit price, only used for limit and buy-limit orders
+      stopPrice - a buy price, only user for buy and buy-stop orders
+      timePlaced - the time the order was placed
+      typeOfOrder - use enum T_ORDER - type of order
+      stockSymbol - the ticker symbol for the appropriate stock
+
+      User defined callback functions - You can use the "setCallback()"
+      function to set a callback funtion that will be executed after and order
+      has been successfully executed. An example could be to look up a users
+      email address based on their userID and email them a message with an
+      update.
+
+      */
+
     // Getter method for type of order
     T_ORDER type();
     int getShares();
@@ -24,6 +44,7 @@ public:
     QDateTime getDate();
     int getUser();
 
+    // Setter method for each type
     void setType(T_ORDER t);
     void setShares(int);
     void setLimit(float);
@@ -32,7 +53,7 @@ public:
     void executeCallback(Order*);
     void setDate(QDateTime);
 
-
+    // Needed for sorting
     bool operator<(const Order&) const;
 
 private:

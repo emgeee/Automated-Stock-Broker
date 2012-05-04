@@ -10,6 +10,9 @@ void StockBroker::updateMarket(float value)
     // create a local reference for easier access
     QList<Order*> &list = *orderList;
 
+    if(list.empty())
+        return;
+
     QList<Order*> executionList;
 
     // iterate through all lists and convert appropriate orders to new orders
