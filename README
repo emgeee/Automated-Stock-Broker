@@ -17,3 +17,32 @@ sudo cp StockBroker/libStockBroker.so* /lib
 
 After that you will be able to run the MarketSimulation program
 in the MartketSimulation directory
+
+======
+Common terms used throughout the project and their meanings.
+======
+Buy Order: 
+To place an order on the market to buy a stock.
+
+Sell Order: 
+To place an order on the market to sell a stock.
+
+Stop Order(s): 
+A stop order is an order to buy or sell a stock once the price of the stock reaches a certain price, referred to as the STOP PRICE.
+A buy stop order is executed at the stop price or above the current market price.
+A sell stop order is executed at the stop price below the current market price.
+
+
+Limit Order(s): 
+A limit order is an order to buy or sell a stock at a specific price or better.
+A buy limit order can ONLY be executed at the limit price or lower.
+A sell limit order can ONLY be executed at the limit price or higher.
+
+=====
+Sample Application
+=====
+Due to the nature of the library created in this project, you are free to create your own sample application to directly plug into the real market. We advise that you do not use this on a real portfolio due to any unforseen bugs. We are not liable for anything you do with this library.
+=====
+
+
+
