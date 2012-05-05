@@ -11,9 +11,11 @@ void simulationMarket::run(){
 
 }
 
+// Uses the random number generator to create prices for
+// each of the stock. This method will increase/decrease
+// the price of each stock
 void simulationMarket::fluctuatePrices(float low, float high)
 {
-
 
     foreach(stock *s, stocks){
        float flucation = randFloatGenerator(low,high);
@@ -46,18 +48,15 @@ void simulationMarket::generateFakeMarketFromFile(QString fileName){
             newStock->tickerSymbol = fields.at(0);
             newStock->currentPrice = fields.at(1).toFloat();
             newStock->quantityAvailable = fields.at(2).toInt();
-
             stocks.append(newStock);
-
-
         }
-
         inputFile.close();
     }
-
 }
 
 
+// Sanity check to see if orders can physically
+// be done
 bool simulationMarket::canProccessOrder(QString ticker, int quantity)
 {
 
@@ -73,6 +72,8 @@ bool simulationMarket::canProccessOrder(QString ticker, int quantity)
     return true;
 }
 
+
+// Returns the price of a certain stock, uses the TICKER symbol
 float simulationMarket::getPrice(QString ticker)
 {
 
@@ -92,6 +93,7 @@ float simulationMarket::getPrice(QString ticker)
 
 }
 
+// debugging to print out the stocks that are in the current market
 void simulationMarket::printStocks()
 {
 
@@ -142,6 +144,9 @@ bool simulationMarket::updateStockPrice(QString ticker, float offSet)
     return false;
 }
 
+// Gets all of the tickers and their values
+// Function is used for the GUI to display the market
+// in an easy fashion
 QStringList simulationMarket::getEntireMarket()
 {
     QStringList marketList;
